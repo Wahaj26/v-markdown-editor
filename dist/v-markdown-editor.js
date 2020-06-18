@@ -135,6 +135,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -146,7 +155,7 @@ __webpack_require__.r(__webpack_exports__);
     id: {
       type: String,
       "default": function _default() {
-        return 'v-md-editor-' + Math.random().toString(16).substr(2, 9);
+        return "v-md-editor-" + Math.random().toString(16).substr(2, 9);
       }
     },
     css: {
@@ -154,19 +163,19 @@ __webpack_require__.r(__webpack_exports__);
     },
     width: {
       type: [String, Number],
-      "default": '100%'
+      "default": "100%"
     },
     height: {
       type: [String, Number],
-      "default": '300px'
+      "default": "300px"
     },
     toolbar: {
       type: String,
-      "default": 'clean redo undo | bold italic strikethrough heading | image link | numlist bullist code quote | preview fullscreen'
+      "default": "clean redo undo | bold italic strikethrough heading | image link | numlist bullist code quote | preview fullscreen"
     },
     placeholder: {
       type: String,
-      "default": ''
+      "default": ""
     },
     extend: {
       type: Object
@@ -175,93 +184,93 @@ __webpack_require__.r(__webpack_exports__);
       type: Object,
       "default": function _default() {
         return {
-          "clean": {
+          clean: {
             cmd: "clean",
             ico: "fas far fa-remove-format mdi mdi-format-clear",
             title: "Html to markdown",
-            hotkey: 'Shift-Alt-F'
+            hotkey: "Shift-Alt-F"
           },
-          "undo": {
+          undo: {
             cmd: "undo",
             ico: "fas far fa-undo mdi mdi-undo-variant",
             title: "Undo",
-            hotkey: 'Ctrl-Z'
+            hotkey: "Ctrl-Z"
           },
-          "redo": {
+          redo: {
             cmd: "redo",
             ico: "fas far fa-redo mdi mdi-redo-variant",
             title: "Redo",
-            hotkey: 'Ctrl-Y'
+            hotkey: "Ctrl-Y"
           },
-          "bullist": {
+          bullist: {
             cmd: "bullist",
             ico: "fas far fa-list-ul mdi mdi-format-list-bulleted",
             title: "Generic List"
           },
-          "numlist": {
+          numlist: {
             cmd: "numlist",
             ico: "fas far fa-list-ol mdi mdi-format-list-numbered",
             title: "Numbered List"
           },
-          'bold': {
-            title: 'Bold',
-            ico: 'fas far fa-bold mdi mdi-format-bold',
-            cmd: 'bold',
-            hotkey: 'Ctrl-B'
+          bold: {
+            title: "Bold",
+            ico: "fas far fa-bold mdi mdi-format-bold",
+            cmd: "bold",
+            hotkey: "Ctrl-B"
           },
-          'italic': {
-            title: 'Italic',
+          italic: {
+            title: "Italic",
             ico: "fas far fa-italic mdi mdi-format-italic",
-            cmd: 'italic',
-            hotkey: 'Ctrl-I'
+            cmd: "italic",
+            hotkey: "Ctrl-I"
           },
-          "strikethrough": {
+          strikethrough: {
             cmd: "strikethrough",
             ico: "fas far fa-strikethrough mdi mdi-format-strikethrough",
             title: "Strikethrough"
           },
-          'heading': {
-            title: 'Heading',
+          heading: {
+            title: "Heading",
             ico: "fas far fa-heading mdi mdi-format-header-3",
-            cmd: 'heading',
-            hotkey: 'Ctrl-H'
+            cmd: "heading",
+            hotkey: "Ctrl-H"
           },
-          'code': {
-            title: 'Code',
+          code: {
+            title: "Code",
             ico: "fas far fa-code mdi mdi-code-tags",
-            cmd: 'code',
-            hotkey: 'Ctrl-X'
+            cmd: "code",
+            hotkey: "Ctrl-X"
           },
-          'quote': {
-            title: 'Quote',
+          quote: {
+            title: "Quote",
             ico: "fas far fa-quote-left mdi mdi-format-quote-open",
-            cmd: 'quote',
-            hotkey: 'Ctrl-Q'
+            cmd: "quote",
+            hotkey: "Ctrl-Q"
           },
-          'link': {
-            title: 'Link',
+          link: {
+            title: "Link",
             ico: "fas far fa-link mdi mdi-link",
-            cmd: 'link',
-            hotkey: 'Ctrl-K'
+            cmd: "link",
+            hotkey: "Ctrl-K"
           },
-          'image': {
-            title: 'Image',
+          image: {
+            title: "Image",
             ico: "fas far fa-image mdi mdi-image",
-            cmd: 'image',
-            hotkey: 'Ctrl-P'
+            cmd: "image",
+            hotkey: "Ctrl-P"
           },
-          "fullscreen": {
+          fullscreen: {
             cmd: "fullscreen",
             ico: "fas far fa-expand mdi mdi-fullscreen",
             title: "Toggle Fullscreen",
-            hotkey: 'F11',
+            hotkey: "F11",
             ready: true
           },
-          "preview": {
+          preview: {
             cmd: "preview",
             ico: "fas far fa-eye mdi mdi-eye",
             title: "Toggle Preview",
-            hotkey: 'Ctrl-P',
+            hotkey: "Ctrl-P",
             ready: true
           }
         };
@@ -269,11 +278,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     theme: {
       type: String,
-      "default": 'outline-secondary'
+      "default": "outline-secondary"
     },
     value: {
       type: String,
-      "default": '',
+      "default": "",
       required: false
     },
     options: {
@@ -283,6 +292,11 @@ __webpack_require__.r(__webpack_exports__);
           lineWrapping: true
         };
       }
+    },
+    showPreview: {
+      type: String,
+      "default": false,
+      required: false
     }
   },
   data: function data() {
@@ -290,7 +304,7 @@ __webpack_require__.r(__webpack_exports__);
       editor: null,
       preview: false,
       fullScreen: false,
-      html: '',
+      html: "",
       toolbars: []
     };
   },
@@ -396,14 +410,14 @@ __webpack_require__.r(__webpack_exports__);
       var startPoint = ed.getCursor("start");
       var endPoint = ed.getCursor("end");
       var repl = {
-        "quote": /^(\s*)\>\s+/,
-        "bullist": /^(\s*)(\*|\-|\+)\s+/,
-        "numlist": /^(\s*)\d+\.\s+/
+        quote: /^(\s*)\>\s+/,
+        bullist: /^(\s*)(\*|\-|\+)\s+/,
+        numlist: /^(\s*)\d+\.\s+/
       };
       var map = {
-        "quote": "> ",
-        "bullist": "* ",
-        "numlist": "1. "
+        quote: "> ",
+        bullist: "* ",
+        numlist: "1. "
       };
 
       for (var i = startPoint.line; i <= endPoint.line; i++) {
@@ -480,8 +494,8 @@ __webpack_require__.r(__webpack_exports__);
 
       if (val) {
         Object.keys(val).forEach(function (key) {
-          start = start.replace('#' + key + '#', val[key]);
-          end = end.replace('#' + key + '#', val[key]);
+          start = start.replace("#" + key + "#", val[key]);
+          end = end.replace("#" + key + "#", val[key]);
         });
       }
 
@@ -512,48 +526,48 @@ __webpack_require__.r(__webpack_exports__);
     drawLink: function drawLink(obj) {
       var stat = this.state();
 
-      this._replaceSelection(stat.link, ['[#title#]', '(#url# "#title#")'], obj);
+      this._replaceSelection(stat.link, ["[#title#]", '(#url# "#title#")'], obj);
     },
     command: function command(key) {
       var ed = this.editor;
       var text = ed.getSelection(); // this.$root.$emit('markdown-editor:' + key, this);
 
-      this.$emit('command:' + key, this);
+      this.$emit("command:" + key, this);
 
       switch (key) {
-        case 'undo':
+        case "undo":
           ed.undo();
           break;
 
-        case 'redo':
+        case "redo":
           ed.redo();
           break;
 
-        case 'bold':
-          this._toggleBlock('bold', '**');
+        case "bold":
+          this._toggleBlock("bold", "**");
 
           break;
 
-        case 'italic':
-          this._toggleBlock('italic', '*');
+        case "italic":
+          this._toggleBlock("italic", "*");
 
           break;
 
-        case 'strikethrough':
-          this._toggleBlock('strikethrough', '~~');
+        case "strikethrough":
+          this._toggleBlock("strikethrough", "~~");
 
           break;
 
-        case 'code':
-          this._toggleBlock('code', '```');
+        case "code":
+          this._toggleBlock("code", "```");
 
           break;
 
-        case 'heading':
-          ed.replaceSelection('\n### ' + text);
+        case "heading":
+          ed.replaceSelection("\n### " + text);
           break;
 
-        case 'image':
+        case "image":
           var url = prompt("Please enter image url", "https://");
 
           if (this.isUrl(url)) {
@@ -566,7 +580,7 @@ __webpack_require__.r(__webpack_exports__);
 
           break;
 
-        case 'link':
+        case "link":
           var url = prompt("Please enter link", "https://");
 
           if (this.isUrl(url)) {
@@ -579,34 +593,34 @@ __webpack_require__.r(__webpack_exports__);
 
           break;
 
-        case 'quote':
-          this._toggleLine('quote');
+        case "quote":
+          this._toggleLine("quote");
 
           break;
 
-        case 'numlist':
-          this._toggleLine('numlist');
+        case "numlist":
+          this._toggleLine("numlist");
 
           break;
 
-        case 'bullist':
-          this._toggleLine('bullist');
+        case "bullist":
+          this._toggleLine("bullist");
 
           break;
 
-        case 'preview':
+        case "preview":
           this.html = marked__WEBPACK_IMPORTED_MODULE_1___default()(ed.getValue(), {
             breaks: true
           });
           this.preview = !this.preview;
           break;
 
-        case 'fullscreen':
+        case "fullscreen":
           this.fullScreen = !this.fullScreen;
           ed.setOption("fullScreen", !ed.getOption("fullScreen"));
           break;
 
-        case 'clean':
+        case "clean":
           ed.replaceSelection(markdownparser__WEBPACK_IMPORTED_MODULE_0___default.a.parse(text));
           break;
       }
@@ -616,45 +630,51 @@ __webpack_require__.r(__webpack_exports__);
     build: function build() {
       var _this = this;
 
-      if (this.__rendered) return;
-      var buttons = Object.assign({}, this.buttons, this.extend);
-      var shortcuts = {};
-      this.toolbar.split('|').forEach(function (t, i) {
-        var group = [];
-        t.toLowerCase().split(/(\s)/).forEach(function (b) {
-          if (!_this.isEmpty(b)) {
-            var btn = buttons[b];
+      if (document.getElementById(this.id)) {
+        if (this.__rendered) return;
+        var buttons = Object.assign({}, this.buttons, this.extend);
+        var shortcuts = {};
+        this.toolbar.split("|").forEach(function (t, i) {
+          var group = [];
+          t.toLowerCase().split(/(\s)/).forEach(function (b) {
+            if (!_this.isEmpty(b)) {
+              var btn = buttons[b];
 
-            if (!_this.isEmpty(btn.hotkey)) {
-              shortcuts[btn.hotkey] = function () {
-                return _this.command(btn.cmd);
-              };
+              if (!_this.isEmpty(btn.hotkey)) {
+                shortcuts[btn.hotkey] = function () {
+                  return _this.command(btn.cmd);
+                };
+              }
+
+              group.push(btn);
             }
-
-            group.push(btn);
-          }
+          });
+          if (group.length > 0) _this.toolbars.push(group);
         });
-        if (group.length > 0) _this.toolbars.push(group);
-      });
-      var o = Object.assign({
-        mode: 'markdown',
-        extraKeys: shortcuts
-      }, this.options);
-      var ed = this.editor = codemirror__WEBPACK_IMPORTED_MODULE_2___default.a.fromTextArea(document.getElementById(this.id), o);
-      ed.setValue(this.value);
-      ed.setSize(this.width, this.height);
-      ed.on("change", function (ed) {
-        var val = ed.getValue();
+        var o = Object.assign({
+          mode: "markdown",
+          extraKeys: shortcuts
+        }, this.options);
+        var ed = this.editor = codemirror__WEBPACK_IMPORTED_MODULE_2___default.a.fromTextArea(document.getElementById(this.id), o);
+        ed.setValue(this.value);
+        ed.setSize(this.width, this.height);
+        ed.on("change", function (ed) {
+          var val = ed.getValue();
 
-        _this.$emit('change', val);
+          _this.$emit("change", val);
 
-        _this.$emit('input', val);
-      });
-      this.__rendered = true;
+          _this.$emit("input", val);
+        });
+        this.__rendered = true;
+      }
     }
   },
   mounted: function mounted() {
     this.build();
+
+    if (this.showPreview === "true" && document.getElementById(this.id)) {
+      this.command("preview");
+    }
   },
   destroy: function destroy() {
     this.editor.toTextArea();
